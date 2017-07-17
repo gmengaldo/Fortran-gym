@@ -1,8 +1,11 @@
 module shape_module
-    !! This module contains the base class for various geometric shape
+    !! This module contains the base class for various geometric shapes
     implicit none
 
     private
+
+    real(kind=4) :: pi = 3.14
+
     public :: shape_type
 
     ! Class shape
@@ -12,6 +15,7 @@ module shape_module
         real(kind=4) :: dim3 = 0.
     contains
         procedure, public  :: area   => calculate_area
+        procedure, public  :: volume => calculate_volume
     end type shape_type
 
     ! Definition of the constructor
@@ -42,10 +46,23 @@ class(shape_type), intent(inout) :: this
 real(kind=4), intent(in)  :: dim1
 real(kind=4), intent(in)  :: dim2
 real(kind=4), intent(out) :: area
-real(kind=4), parameter   :: pi = 3.14
 
-    area = this%dim1 * this%dim2
+    area = dim1 * dim2
 
 end subroutine calculate_area
+
+
+
+subroutine calculate_volume(this, dim1, dim2, dim3, volume)
+class(shape_type), intent(inout) :: this
+
+real(kind=4), intent(in)  :: dim1
+real(kind=4), intent(in)  :: dim2
+real(kind=4), intent(in)  :: dim3
+real(kind=4), intent(out) :: volume
+
+volume = this%dim1 * this%dim2 * this%dim3
+
+end subroutine calculate_volume
 
 end module shape_module

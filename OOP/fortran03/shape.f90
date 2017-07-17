@@ -9,9 +9,10 @@ program shape_main
     real(kind=4)     :: dim2
     real(kind=4)     :: area
 
-    ! Call shape constructor
     dim1 = 20
     dim2 = 10
+
+    ! Call shape constructor
     s1 = shape_type(dim1, dim2)
 
     ! Calculate area or volume
